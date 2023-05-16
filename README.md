@@ -1,6 +1,6 @@
 <h1> Desafio: Aprenda na Prática Programação Orientada a Objetos</h1>
 
-<p align="center"> 📜 <a href="https://academiapme-my.sharepoint.com/:p:/g/personal/camila_cavalcante_dio_me/EaXyYOjBaFpZjkxhexMo5EcBKMEEAI5t5aHlsTjnBQJlUw?e=nxdB6C"> SLIDES APRESENTADO NO PROJETO </a> 📜 </P>
+<p align="center"> 📜 <a href="https://academiapme-my.sharepoint.com/:p:/g/personal/camila_cavalcante_dio_me/EaXyYOjBaFpZjkxhexMo5EcBKMEEAI5t5aHlsTjnBQJlUw?e=nxdB6C"> SLIDES APRESENTADO NO PROJETO </a> 📜 </p>
 <p> Sejam bem-vindos ao desafio: <strong>APRENDENDO NA PRÁTICA O PARADIGMA DE ORIENTAÇÃO A OBJETOS.</strong><br>Desafio este que tive a honra de co-criar com a plataforma de cursos online <strong><a href="https://web.digitalinnovation.one/">DIGITAL INNOVATION ONE</a></strong> 💛🧡 e disponibilizado de forma gratuita para a comunidade dos desenvolvedores Java.<br>
     💎 O objetivo principal é colocar em prática umas das principais ferramentas da OO: <strong>ABSTRAÇÃO, ENCAPSULAMENTO, HERANÇA E POLIMORFISMO,</strong> através de um projeto Java. </p>
 
@@ -10,7 +10,7 @@
 
 <p>
 ✅ Conhecer a sintaxe da Java<br>
-✅ Java JDK 11<br>
+✅ Java JDK 18<br>
 ✅ IDE para desenvolvimento Java (usarei IntelliJ)<br>
 ✅ Git<br>
 ✅ Conta no GitHub<br>
@@ -56,7 +56,6 @@ Habilidade de concentrar-se nos aspectos essenciais de um domínio, ignorando ca
 <p>Capacidade de um objeto poder ser referenciado de várias formas. Cuidado, polimorfismo não quer dizer que o objeto fica se transformando, muito pelo contrário, um objeto nasce de um tipo e morre daquele tipo, o que pode mudar é a maneira como nos referimos a ele. A capacidade de tratar objetos criados a partir das classes específicas como objetos de uma classe genérica é chamada de polimorfismo.</p>
 <br>
 <h2 align="center"> ‼️ CONCEITOS FUNDAMENTAIS POO ‼️ </h2>
-<p>
 <h3>🔻 DOMÍNIO:</h3> 
 Domínio da aplicação, também conhecida como camada de negócio ou de objetos de negócio, é aquela onde estão localizadas as classes que fazem parte do domínio do problema, ou seja, classes correspondentes a objetos que fazem parte da descrição do problema.
 
@@ -86,7 +85,6 @@ Uma instância de uma classe é um novo objeto criado dessa classe, com o operad
 
 <h2> 🧮 Linguagem de Programação vs Paradigma de Linguagem de Programação</h2>
 
-<p>
 <h3> ✨ LINGUAGEM DE PROGRAMAÇÃO:</h3> 
 É uma linguagem formal que, através de uma série de instruções, permite que um programador escreva um conjunto de ordens, ações consecutivas, dados e algoritmos para criar programas que controlam o comportamento físico e lógico de uma máquina.<br>
 Seguem alguns exemplos de como as linguagens de programação podem ser classificadas:<br>
