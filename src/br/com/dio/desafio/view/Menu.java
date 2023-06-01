@@ -20,16 +20,47 @@ public class Menu {
     }
 
     public void MenuPrincipal() {
-        int escolha;
+        int escolha = 0;
 
         while (true) {
-            System.out.println("Selecione uma ação:");
-            System.out.println("   1) Adcionar Bootcamp.");
-            System.out.println("   2) Adcionar Curso.");
-            System.out.println("   3) Adcionar Dev.");
-            System.out.println("   4) Adcionar Mentoria.");
+            System.out.println("Selecione um grupo de acoes:");
+            System.out.println("   1) Adicionar");
+            System.out.println("   2) Exibir");
+            System.out.println("   3) Excluir");
             System.out.println("   0) Sair.");
-            escolha = Integer.parseInt(scanner.nextLine());
+            if (scanner.hasNextInt())
+                escolha = Integer.parseInt(scanner.nextLine());
+
+            if (escolha == 1) {
+                System.out.println("Selecione uma ação:");
+                System.out.println("      1) Adicionar Bootcamp.");
+                System.out.println("      2) Adicionar Curso.");
+                System.out.println("      3) Adicionar Dev.");
+                System.out.println("      4) Adicionar Mentoria.");
+                System.out.println("      0) Sair.");
+                if (scanner.hasNextInt())
+                    escolha = Integer.parseInt(scanner.nextLine());
+
+            } else if (escolha == 2) {
+                System.out.println("Selecione uma ação:");
+                System.out.println("      1) Exibir Bootcamp.");
+                System.out.println("      2) Exibir Curso.");
+                System.out.println("      3) Exibir Dev.");
+                System.out.println("      4) Exibir Mentoria.");
+                System.out.println("      0) Sair.");
+                if (scanner.hasNextInt())
+                    escolha = Integer.parseInt(scanner.nextLine()) * 10;
+
+            } else if (escolha == 3) {
+                System.out.println("Selecione uma ação:");
+                System.out.println("      1) Excluir Bootcamp.");
+                System.out.println("      2) Excluir Curso.");
+                System.out.println("      3) Excluir Dev.");
+                System.out.println("      4) Excluir Mentoria.");
+                System.out.println("      0) Sair.");
+                if (scanner.hasNextInt())
+                    escolha = Integer.parseInt(scanner.nextLine()) * 100;
+            }
 
             switch (escolha) {
                 case 1:
@@ -43,6 +74,30 @@ public class Menu {
                     break;
                 case 4:
                     adicionaMentoria();
+                    break;
+                case 10:
+                    exibeBootcamp();
+                    break;
+                case 20:
+                    exibeCurso();
+                    break;
+                case 30:
+                    exibeDev();
+                    break;
+                case 40:
+                    exibeMentoria();
+                    break;
+                case 100:
+                    excluiBootcamp();
+                    break;
+                case 200:
+                    excluiCurso();
+                    break;
+                case 300:
+                    excluiDev();
+                    break;
+                case 400:
+                    excluiMentoria();
                     break;
                 case 0:
                     return;
@@ -66,8 +121,11 @@ public class Menu {
         entrada = scanner.nextLine();
         curso.setDescricao(entrada);
         System.out.print("Carga horaria do curso? ");
-        entrada = scanner.nextLine();
-        curso.setCargaHoraria(Integer.parseInt(entrada));
+
+        if (scanner.hasNextInt()) {
+            entrada = scanner.nextLine();
+            curso.setCargaHoraria(Integer.parseInt(entrada));
+        }
 
         cursos.add(curso);
     }
