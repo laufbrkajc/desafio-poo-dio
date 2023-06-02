@@ -2,6 +2,7 @@ package br.com.dio.desafio.view;
 
 import java.util.Scanner;
 import java.util.LinkedHashSet;
+import java.time.LocalDate;
 
 import br.com.dio.desafio.dominio.*;
 
@@ -130,6 +131,7 @@ public class Menu {
                 .forEach(c -> bootcamp.getConteudos().add(c));
         }
 
+        System.out.println(bootcamp.getConteudos());
         bootcamps.add(bootcamp);
     }
 
@@ -173,6 +175,18 @@ public class Menu {
     }
 
     public void adicionaMentoria() {
+        Mentoria mentoria = new Mentoria();
+        String entrada;
+
+        System.out.print("Titulo do mentoria? ");
+        entrada = scanner.nextLine();
+        mentoria.setTitulo(entrada);
+        System.out.print("Descricao do mentoria? ");
+        entrada = scanner.nextLine();
+        mentoria.setDescricao(entrada);
+        mentoria.setData(LocalDate.now());
+
+        mentorias.add(mentoria);
     }
 
     @Override
