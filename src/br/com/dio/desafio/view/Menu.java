@@ -27,7 +27,7 @@ public class Menu {
             System.out.println("   1) Adicionar");
             System.out.println("   2) Exibir");
             System.out.println("   3) Excluir");
-            System.out.println("   0) Sair.");
+            System.out.println("   0) Sair");
             if (scanner.hasNextInt())
                 escolha = Integer.parseInt(scanner.nextLine());
 
@@ -37,7 +37,7 @@ public class Menu {
                 System.out.println("      2) Adicionar Curso.");
                 System.out.println("      3) Adicionar Dev.");
                 System.out.println("      4) Adicionar Mentoria.");
-                System.out.println("      0) Sair.");
+                System.out.println("      0) Sair");
                 if (scanner.hasNextInt())
                     escolha = Integer.parseInt(scanner.nextLine());
 
@@ -47,7 +47,7 @@ public class Menu {
                 System.out.println("      2) Exibir Curso.");
                 System.out.println("      3) Exibir Dev.");
                 System.out.println("      4) Exibir Mentoria.");
-                System.out.println("      0) Sair.");
+                System.out.println("      0) Sair");
                 if (scanner.hasNextInt())
                     escolha = Integer.parseInt(scanner.nextLine()) * 10;
 
@@ -57,7 +57,7 @@ public class Menu {
                 System.out.println("      2) Excluir Curso.");
                 System.out.println("      3) Excluir Dev.");
                 System.out.println("      4) Excluir Mentoria.");
-                System.out.println("      0) Sair.");
+                System.out.println("      0) Sair");
                 if (scanner.hasNextInt())
                     escolha = Integer.parseInt(scanner.nextLine()) * 100;
             }
@@ -75,32 +75,31 @@ public class Menu {
                 case 4:
                     adicionaMentoria();
                     break;
-                case 10:
-                    exibeBootcamp();
-                    break;
-                case 20:
-                    exibeCurso();
-                    break;
-                case 30:
-                    exibeDev();
-                    break;
-                case 40:
-                    exibeMentoria();
-                    break;
-                case 100:
-                    excluiBootcamp();
-                    break;
-                case 200:
-                    excluiCurso();
-                    break;
-                case 300:
-                    excluiDev();
-                    break;
-                case 400:
-                    excluiMentoria();
-                    break;
+                // case 10:
+                //     exibeBootcamp();
+                //     break;
+                // case 20:
+                //     exibeCurso();
+                //     break;
+                // case 30:
+                //     exibeDev();
+                //     break;
+                // case 40:
+                //     exibeMentoria();
+                //     break;
+                // case 100:
+                //     excluiBootcamp();
+                //     break;
+                // case 200:
+                //     excluiCurso();
+                //     break;
+                // case 300:
+                //     excluiDev();
+                //     break;
+                // case 400:
+                //     excluiMentoria();
+                //     break;
                 case 0:
-                    return;
                 default:
                     return;
             }
@@ -108,6 +107,30 @@ public class Menu {
     }
 
     public void adicionaBootcamp() {
+        Bootcamp bootcamp = new Bootcamp();
+        String entrada;
+        LinkedHashSet<Conteudo> conteudos = new LinkedHashSet<>();
+        conteudos.addAll(cursos);
+        conteudos.addAll(mentorias);
+
+        System.out.print("Titulo do bootcamp? ");
+        entrada = scanner.nextLine();
+        bootcamp.setNome(entrada);
+        System.out.print("Descricao do bootcamp? ");
+        entrada = scanner.nextLine();
+        bootcamp.setDescricao(entrada);
+        System.out.print("Conteudos para o bootcamp? \n");
+        System.out.print("   Titulos separados por virgula.\n");
+        String[] possiveisCounteudos = scanner.nextLine().split(",");
+
+        for (String tituloConteudo : possiveisCounteudos) {
+            conteudos
+                .stream()
+                .filter(c -> c.getTitulo().equals(tituloConteudo))
+                .forEach(c -> bootcamp.getConteudos().add(c));
+        }
+
+        bootcamps.add(bootcamp);
     }
 
     public void adicionaCurso() {
