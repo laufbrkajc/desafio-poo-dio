@@ -47,10 +47,10 @@ public class Menu {
             } else if (escolha == 2) {
                 System.out.println("");
                 System.out.println("Selecione uma ação:");
-                System.out.println("      1) Exibir Bootcamp.");
-                System.out.println("      2) Exibir Curso.");
-                System.out.println("      3) Exibir Dev.");
-                System.out.println("      4) Exibir Mentoria.");
+                System.out.println("      1) Exibir Bootcamps.");
+                System.out.println("      2) Exibir Cursos.");
+                System.out.println("      3) Exibir Devs.");
+                System.out.println("      4) Exibir Mentorias.");
                 System.out.println("      0) Sair");
                 if (scanner.hasNextInt())
                     escolha = Integer.parseInt(scanner.nextLine()) * 10;
@@ -92,18 +92,18 @@ public class Menu {
                 case 40:
                     exibeMentorias();
                     break;
-                // case 100:
-                //     excluiBootcamp();
-                //     break;
-                // case 200:
-                //     excluiCurso();
-                //     break;
-                // case 300:
-                //     excluiDev();
-                //     break;
-                // case 400:
-                //     excluiMentoria();
-                //     break;
+                case 100:
+                    excluiBootcamp();
+                    break;
+                case 200:
+                    excluiConteudo();
+                    break;
+                case 300:
+                    excluiDev();
+                    break;
+                case 400:
+                    excluiConteudo();
+                    break;
                 case 0:
                 default:
                     return;
@@ -126,11 +126,13 @@ public class Menu {
         System.out.print("   Titulos separados por virgula.\n");
         String[] possiveisCounteudos = scanner.nextLine().split(",");
 
-        for (String tituloConteudo : possiveisCounteudos) {
-            try {
-                bootcamp.getConteudos().add(encontraConteudo(tituloConteudo));
-            } catch (ItemNaoEncontradoException e) {
-                System.out.println(e.getMessage());
+        if (possiveisCounteudos[0] != "") {
+            for (String tituloConteudo : possiveisCounteudos) {
+                try {
+                    bootcamp.getConteudos().add(encontraConteudo(tituloConteudo));
+                } catch (ItemNaoEncontradoException e) {
+                    System.out.println(e.getMessage());
+                }
             }
         }
 
@@ -168,11 +170,13 @@ public class Menu {
         System.out.println("Conteudos para o Dev? (Separados por virgula)");
         entradas = scanner.nextLine().split(",");
 
-        for (String nomeBootcamp : entradas) {
-            try {
-                dev.inscreverBootcamp(encontraBootcamp(nomeBootcamp));
-            } catch (ItemNaoEncontradoException e) {
-                System.out.println(e.getMessage());
+        if (entradas[0] != "") {
+            for (String nomeBootcamp : entradas) {
+                try {
+                    dev.inscreverBootcamp(encontraBootcamp(nomeBootcamp));
+                } catch (ItemNaoEncontradoException e) {
+                    System.out.println(e.getMessage());
+                }
             }
         }
 
@@ -220,6 +224,49 @@ public class Menu {
         System.out.println("");
         for (Mentoria mm : mentorias) {
             System.out.println(mm);
+        }
+    }
+
+    public void excluiBootcamp() {
+        String entrada;
+        System.out.println("");
+        System.out.println("Nome do bootcamp: ");
+        entrada = scanner.nextLine();
+
+        try {
+            bootcamps.remove(encontraBootcamp(entrada));
+        } catch (ItemNaoEncontradoException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void excluiConteudo() {
+        String entrada;
+        System.out.println("");
+        System.out.println("Nome do curso/mentoria: ");
+        entrada = scanner.nextLine();
+
+        try {
+            Conteudo aRemover = encontraConteudo(entrada);
+            if (aRemover instanceof Curso)
+                cursos.remove(aRemover);
+            else
+                mentorias.remove(aRemover);
+        } catch (ItemNaoEncontradoException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void excluiDev() {
+        String entrada;
+        System.out.println("");
+        System.out.println("Nome do Dev: ");
+        entrada = scanner.nextLine();
+
+        try {
+            devs.remove(encontraDev(entrada));
+        } catch (ItemNaoEncontradoException e) {
+            System.out.println(e.getMessage());
         }
     }
 
