@@ -24,6 +24,7 @@ public class Menu {
         int escolha = 0;
 
         while (true) {
+            System.out.println("");
             System.out.println("Selecione um grupo de acoes:");
             System.out.println("   1) Adicionar");
             System.out.println("   2) Exibir");
@@ -33,6 +34,7 @@ public class Menu {
                 escolha = Integer.parseInt(scanner.nextLine());
 
             if (escolha == 1) {
+                System.out.println("");
                 System.out.println("Selecione uma ação:");
                 System.out.println("      1) Adicionar Bootcamp.");
                 System.out.println("      2) Adicionar Curso.");
@@ -43,6 +45,7 @@ public class Menu {
                     escolha = Integer.parseInt(scanner.nextLine());
 
             } else if (escolha == 2) {
+                System.out.println("");
                 System.out.println("Selecione uma ação:");
                 System.out.println("      1) Exibir Bootcamp.");
                 System.out.println("      2) Exibir Curso.");
@@ -53,6 +56,7 @@ public class Menu {
                     escolha = Integer.parseInt(scanner.nextLine()) * 10;
 
             } else if (escolha == 3) {
+                System.out.println("");
                 System.out.println("Selecione uma ação:");
                 System.out.println("      1) Excluir Bootcamp.");
                 System.out.println("      2) Excluir Curso.");
@@ -76,18 +80,18 @@ public class Menu {
                 case 4:
                     adicionaMentoria();
                     break;
-                // case 10:
-                //     exibeBootcamp();
-                //     break;
-                // case 20:
-                //     exibeCurso();
-                //     break;
-                // case 30:
-                //     exibeDev();
-                //     break;
-                // case 40:
-                //     exibeMentoria();
-                //     break;
+                case 10:
+                    exibeBootcamps();
+                    break;
+                case 20:
+                    exibeCursos();
+                    break;
+                case 30:
+                    exibeDevs();
+                    break;
+                case 40:
+                    exibeMentorias();
+                    break;
                 // case 100:
                 //     excluiBootcamp();
                 //     break;
@@ -114,6 +118,7 @@ public class Menu {
         conteudos.addAll(cursos);
         conteudos.addAll(mentorias);
 
+        System.out.println("");
         System.out.print("Titulo do bootcamp? ");
         entrada = scanner.nextLine();
         bootcamp.setNome(entrada);
@@ -131,7 +136,6 @@ public class Menu {
                 .forEach(c -> bootcamp.getConteudos().add(c));
         }
 
-        System.out.println(bootcamp.getConteudos());
         bootcamps.add(bootcamp);
     }
 
@@ -139,6 +143,7 @@ public class Menu {
         Curso curso = new Curso();
         String entrada;
 
+        System.out.println("");
         System.out.print("Titulo do curso? ");
         entrada = scanner.nextLine();
         curso.setTitulo(entrada);
@@ -159,6 +164,7 @@ public class Menu {
         Dev dev = new Dev();
         String[] entradas;
 
+        System.out.println("");
         System.out.println("Nome do Dev? ");
         dev.setNome(scanner.nextLine());
         System.out.println("Conteudos para o Dev? (Separados por virgula)");
@@ -178,6 +184,7 @@ public class Menu {
         Mentoria mentoria = new Mentoria();
         String entrada;
 
+        System.out.println("");
         System.out.print("Titulo do mentoria? ");
         entrada = scanner.nextLine();
         mentoria.setTitulo(entrada);
@@ -187,6 +194,34 @@ public class Menu {
         mentoria.setData(LocalDate.now());
 
         mentorias.add(mentoria);
+    }
+
+    public void exibeBootcamps() {
+        System.out.println("");
+        for (Bootcamp bb : bootcamps) {
+            System.out.println(bb);
+        }
+    }
+
+    public void exibeCursos() {
+        System.out.println("");
+        for (Curso cc : cursos) {
+            System.out.println(cc);
+        }
+    }
+
+    public void exibeDevs() {
+        System.out.println("");
+        for (Dev dd : devs) {
+            System.out.println(dd);
+        }
+    }
+
+    public void exibeMentorias() {
+        System.out.println("");
+        for (Mentoria mm : mentorias) {
+            System.out.println(mm);
+        }
     }
 
     @Override
