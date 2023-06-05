@@ -114,9 +114,6 @@ public class Menu {
     public void adicionaBootcamp() {
         Bootcamp bootcamp = new Bootcamp();
         String entrada;
-        LinkedHashSet<Conteudo> conteudos = new LinkedHashSet<>();
-        conteudos.addAll(cursos);
-        conteudos.addAll(mentorias);
 
         System.out.println("");
         System.out.print("Titulo do bootcamp? ");
@@ -130,10 +127,11 @@ public class Menu {
         String[] possiveisCounteudos = scanner.nextLine().split(",");
 
         for (String tituloConteudo : possiveisCounteudos) {
-            conteudos
-                .stream()
-                .filter(c -> c.getTitulo().equals(tituloConteudo))
-                .forEach(c -> bootcamp.getConteudos().add(c));
+            try {
+                bootcamp.getConteudos().add(encontraConteudo(tituloConteudo));
+            } catch (ItemNaoEncontradoException e) {
+                System.out.println(e.getMessage());
+            }
         }
 
         bootcamps.add(bootcamp);
@@ -171,10 +169,11 @@ public class Menu {
         entradas = scanner.nextLine().split(",");
 
         for (String nomeBootcamp : entradas) {
-            bootcamps
-                .stream()
-                .filter(b -> b.getNome().equals(nomeBootcamp))
-                .forEach(b -> dev.inscreverBootcamp(b));
+            try {
+                dev.inscreverBootcamp(encontraBootcamp(nomeBootcamp));
+            } catch (ItemNaoEncontradoException e) {
+                System.out.println(e.getMessage());
+            }
         }
 
         devs.add(dev);
@@ -222,6 +221,40 @@ public class Menu {
         for (Mentoria mm : mentorias) {
             System.out.println(mm);
         }
+    }
+
+    public Conteudo encontraConteudo(String nome) throws ItemNaoEncontradoException {
+        LinkedHashSet<Conteudo> conteudos = new LinkedHashSet<>();
+        conteudos.addAll(cursos);
+        conteudos.addAll(mentorias);
+
+        for (Conteudo cc : conteudos) {
+            if (cc.getTitulo().equals(nome)) {
+                return cc;
+            }
+        }
+
+        throw new ItemNaoEncontradoException(nome);
+    }
+
+    public Bootcamp encontraBootcamp(String nome) throws ItemNaoEncontradoException {
+        for (Bootcamp bb : bootcamps) {
+            if (bb.getNome().equals(nome)) {
+                return bb;
+            }
+        }
+
+        throw new ItemNaoEncontradoException(nome);
+    }
+
+    public Dev encontraDev(String nome) throws ItemNaoEncontradoException {
+        for (Dev dd : devs) {
+            if (dd.getNome().equals(nome)) {
+                return dd;
+            }
+        }
+
+        throw new ItemNaoEncontradoException(nome);
     }
 
     @Override
